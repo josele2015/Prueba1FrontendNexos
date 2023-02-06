@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DatosTarjetasComponent } from './datos-tarjetas.component';
-
+import { Routes } from '@angular/router';
+import { AppRoutingModule } from './datos-tarjetas-routing.module';
 
 
 @NgModule({
@@ -9,7 +10,7 @@ import { DatosTarjetasComponent } from './datos-tarjetas.component';
     DatosTarjetasComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,AppRoutingModule
   ]
 })
 export class DatosTarjetasModule { }

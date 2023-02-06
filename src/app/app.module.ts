@@ -1,18 +1,25 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DatosTarjetasModule } from './datos-tarjetas/datos-tarjetas.module';
+import { DatosTransaccionesModule } from './datos-transacciones/datos-transacciones.module';
+import { RutaModule } from './ruta/ruta.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RutaModule,
+    DatosTarjetasModule,
+    DatosTransaccionesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
