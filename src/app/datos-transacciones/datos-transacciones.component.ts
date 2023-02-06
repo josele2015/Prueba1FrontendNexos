@@ -7,11 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./datos-transacciones.component.scss']
 })
 export class DatosTransaccionesComponent implements OnInit{
-  constructor(private ActivatedRoute:ActivatedRoute){
+  constructor(private ActivatedRoute:ActivatedRoute, private router:Router){
   }
   ngOnInit(): void {
     this.ActivatedRoute.data.subscribe(data=>{
       
     })
+  }
+  routeHome(){
+    this.router.navigate(['/home'])  
   }
 }

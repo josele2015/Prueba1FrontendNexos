@@ -8,6 +8,10 @@ const routes:Routes=[{
   component:   DatosTransaccionesComponent,
   children: []
   
+},
+{path: 'home', 
+component: DatosTransaccionesComponent,
+loadChildren:()=>import ("../home/home-routing.module").then(m=>m.AppRoutingModule)
 }
 ]
 @NgModule({
