@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AppTransacciones": {
+    "app-transacciones": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,9 +30,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,14 +66,18 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
+        "serve": {          
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app-transacciones:build",
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "AppTransacciones:build:production"
+              "browserTarget": "app-transacciones:build:production"
             },
             "development": {
-              "browserTarget": "AppTransacciones:build:development"
+              "browserTarget": "app-transacciones:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AppTransacciones:build"
+            "browserTarget": "app-transacciones:build"
           }
         },
         "test": {

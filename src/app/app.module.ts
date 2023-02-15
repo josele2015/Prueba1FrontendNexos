@@ -6,6 +6,7 @@ import { DatosTarjetasModule } from './datos-tarjetas/datos-tarjetas.module';
 import { DatosTransaccionesModule } from './datos-transacciones/datos-transacciones.module';
 import { RutaModule } from './ruta/ruta.module';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     RutaModule,
     DatosTarjetasModule,
-    DatosTransaccionesModule
+    DatosTransaccionesModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
