@@ -14,18 +14,36 @@ export class DatosTarjetasComponent implements OnInit{
   bConsultarTarjeta:boolean=false;
   bEliminarTarjeta:boolean=false;
   
-  crearNumeroValidacion:String="";
-  crearCodigoRespuesta:String="";
-  crearMensaje:String="";
-  crearPAN:String="";
+  valueCrearTitular:string="";
+  valueCrearPAN:string="";
+  valueCrearCedula:string="";
+  valueCrearTipoTarjeta:string="";
+  valueCrearTelefono:string="";
+  crearNumeroValidacion:string="";
+  crearCodigoRespuesta:string="";
+  crearMensaje:string="";
+  crearPAN:string="";
 
-  ConsultarTitular:String="";
-  ConsultarCedula:String="";
-  ConsultarTelefono:String="";
-  ConsultarEstado:String="";
-  ConsultarPAN:String="";
+  valueEnrolarPAN:string="";
+  valueEnrolarNumeroValidacion:string="";
+  EnrolarCodigoRespuesta:string="";
+  EnrolarMensaje:string="";
+  EnrolarPAN:string="";
 
-  constructor(private ActivatedRoute:ActivatedRoute, private router:Router
+  valueConsultarTarjeta:string="";
+  ConsultarTitular:string="";
+  ConsultarCedula:string="";
+  ConsultarTelefono:string="";
+  ConsultarEstado:string="";
+  ConsultarPAN:string="";
+
+  valueEliminarPAN:string="";
+  valueEliminarNumeroVAlidacion:string="";
+  EliminarCodigoRespuesta:string="";
+  EliminarMensaje:string="";
+
+  constructor(private ActivatedRoute:ActivatedRoute
+    ,private router:Router
     ,private datosTarjetasService:DatosTarjetasService){
   }
   ngOnInit(): void {
@@ -39,28 +57,58 @@ export class DatosTarjetasComponent implements OnInit{
 
   ClickCrearTarjeta(){
     this.bCrearTarjeta=true;
-    this.datosTarjetasService.consultarTarjeta("1234567890123456").subscribe(x=>
+    this.datosTarjetasService.PostcrearTarjeta({
+      titular:this.valueCrearTitular,
+      cedula:this.valueCrearCedula,
+      pan:this.valueCrearPAN,
+      telefono:this.valueCrearTelefono,
+      tipo:this.valueCrearTipoTarjeta
+    }).subscribe(x=>
       {
         if(x){
-          this.ConsultarTitular=x.ConsultarTitular;
-          this.ConsultarCedula=x.ConsultarCedula;
-          this.ConsultarTelefono=x.ConsultarTelefono;
-          this.ConsultarEstado=x.ConsultarEstado;
-          this.ConsultarPAN=x.ConsultarPAN;
+          this.crearNumeroValidacion=x.numeroValidacion;
+          this.crearCodigoRespuesta=x.codigoRespuesta;
+          this.crearMensaje=x.mensaje;
+          this.crearPAN=x.pan;
         }
       });
   }
-
+  ClickEnrolarTarjeta(){
+    this.bEnrolarTarjeta=true;
+    this.datosTarjetasService.PutEnrolarTarjeta({
+      pAN:this.valueEnrolarPAN,
+      numeroValidacion:this.valueEnrolarNumeroValidacion
+    }).subscribe(x=>{
+      if(x){
+        this.EnrolarCodigoRespuesta=x.codigoRespuesta;
+        this.EnrolarMensaje=x.mensaje;
+        this.EnrolarPAN=x.pan;
+      }
+    })
+  }
   ClickConsultarTarjeta(){
-    this.datosTarjetasService.consultarTarjeta("1234567890123456").subscribe(x=>
+    this.bConsultarTarjeta=true;
+    this.datosTarjetasService.GetconsultarTarjeta(this.valueConsultarTarjeta).subscribe(x=>
       {
         if(x){
-          this.ConsultarTitular=x.ConsultarTitular;
-          this.ConsultarCedula=x.ConsultarCedula;
-          this.ConsultarTelefono=x.ConsultarTelefono;
-          this.ConsultarEstado=x.ConsultarEstado;
-          this.ConsultarPAN=x.ConsultarPAN;
+          this.ConsultarTitular=x.titular;
+          this.ConsultarCedula=x.cedula;
+          this.ConsultarTelefono=x.telefono;
+          this.ConsultarEstado=x.estado;
+          this.ConsultarPAN=x.pan;
         }
       });
+  }
+  ClickEliminarTarjeta(){
+    this.bEliminarTarjeta=true;
+    this.datosTarjetasService.DeleteTarjeta({
+      pAN             :this.valueEliminarPAN,
+      numeroValidacion:parseInt(this.valueEliminarNumeroVAlidacion)
+      }).subscribe(x=>{
+        if(x){
+          this.EliminarCodigoRespuesta=x.codigoRespuesta;
+          this.EliminarMensaje=x.mensaje;
+        }
+    })
   }
 }

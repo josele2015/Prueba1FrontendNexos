@@ -1,66 +1,92 @@
 <p>Servicios de Tarjetas</p>
 <div>
-    <nav><label>PAN:</label><input></nav>
-    <nav><label>Cedula:</label><input></nav>
-    <nav><label>Tipo de tarjeta:</label><input></nav>
-    <nav><label>Telefono:</label><input></nav>
+    <nav><label>Titular:</label><input [(ngModel)]="valueCrearTitular"></nav>
+    <nav><label>Cedula:</label><input [(ngModel)]="valueCrearCedula"></nav>
+    <nav><label>PAN:</label><input [(ngModel)]="valueCrearPAN"></nav>
+    <nav><label>Telefono:</label><input [(ngModel)]="valueCrearTelefono"></nav>
+    <nav><label>Tipo de tarjeta:</label><input [(ngModel)]="valueCrearTipoTarjeta"></nav>
     <button (click)="ClickCrearTarjeta()">Crear Tarjeta</button>
 </div>
 <div *ngIf="bCrearTarjeta" class="container">
     <div class="row">
         <div class="col-3">
-            <label>Numero Validacion: {{crearNumeroValidacion}}</label>
+            <label>Numero Validación:{{crearNumeroValidacion}}</label>
         </div>
         <div class="col-3">
-            <label>Codigo Respuesta:{{crearCodigoRespuesta}}</label>
+            <label>Código Respuesta:{{crearCodigoRespuesta}}</label>
         </div>
         <div class="col-3">
-            <label>Crear Mensaje:{{crearMensaje}}</label>
+            <label>Mensaje:{{crearMensaje}}</label>
         </div>
         <div class="col-3">
-            <label>crearPAN:{{crearPAN}}</label>
+            <label>PAN:{{crearPAN}}</label>
         </div>
     </div>
 </div>
 <br>
 
 <div>
-    <nav><label>PAN:</label><input></nav>
-    <nav><label>Numero de validacion:</label><input></nav>
-    <button>Enrrolar Tarjeta</button>
+    <nav><label>PAN:</label><input [(ngModel)]="valueEnrolarPAN"></nav>
+    <nav><label>Número de validación:</label><input [(ngModel)]="valueEnrolarNumeroValidacion"></nav>
+    <button (click)="ClickEnrolarTarjeta()">Enrolar Tarjeta</button >
+</div>
+<div *ngIf="bEnrolarTarjeta" class="container">
+    <div class="row">
+        <div class="col-3">
+            <label>Código respuesta: {{EnrolarCodigoRespuesta}}</label>
+        </div>
+        <div class="col-3">
+            <label>Enrolar mensaje: {{EnrolarMensaje}}</label>
+        </div>
+        <div class="col-3">
+            <label>PAN: {{EnrolarPAN}}</label>
+        </div>
+    </div>
 </div>
 <br>
 <div>
-    <nav><label>PAN</label><input></nav>
+    <nav><label>PAN</label><input [(ngModel)]="valueConsultarTarjeta"></nav>
     <button (click)="ClickConsultarTarjeta()">Consultar Tarjeta</button>
-    <div class="row">
-        <div class="col-4">
-            <label>Titular: {{ConsultarTitular}}</label>
+    <div *ngIf="bConsultarTarjeta" class="container">
+        <div class="row">
+            <div class="col-4">
+                <label>Titular: {{ConsultarTitular}}</label>
+            </div>
+            <div class="col-4">
+                <label>Cedula:{{ConsultarCedula}}</label>
+            </div>
+            <div class="col-4">
+                <label>Télefono:{{ConsultarTelefono}}</label>
+            </div>
         </div>
-        <div class="col-4">
-            <label>Cedula:{{ConsultarCedula}}</label>
-        </div>
-        <div class="col-4">
-            <label>Telefono:{{ConsultarTelefono}}</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <label>Estado:{{ConsultarEstado}}</label>
-        </div>
-        <div class="col-4">
-            <label>PAN:{{ConsultarPAN}}</label>
-        </div>
-        <div class="col-4">
+        <div class="row">
+            <div class="col-4">
+                <label>Estado:{{ConsultarEstado}}</label>
+            </div>
+            <div class="col-4">
+                <label>PAN:{{ConsultarPAN}}</label>
+            </div>
+            <div class="col-4">
 
+            </div>
         </div>
     </div>
 </div>
 <br>
 <div>
-    <nav><label>PAN:</label><input></nav>
-    <nav><label>Numero de validacion:</label><input></nav>
-    <button>Eliminar Tarjeta</button>
+    <nav><label>PAN:</label><input [(ngModel)]="valueEliminarPAN"></nav>
+    <nav><label>Número de validación:</label><input [(ngModel)]="valueEliminarNumeroVAlidacion"></nav>
+    <button (click)="ClickEliminarTarjeta()">Eliminar Tarjeta</button>
+    <div *ngIf="bEliminarTarjeta" class="container">
+       <div class="row">
+            <div class="col-3">
+                <label>CodigoRespuesta:{{EliminarCodigoRespuesta}}</label>
+            </div>
+            <div class="col-3">
+                <label>Mensaje:{{EliminarMensaje}}</label>
+            </div> 
+       </div> 
+    </div>
 </div>
 <br>
 <button (click)="routeHome()" > 

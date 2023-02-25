@@ -12,8 +12,7 @@ const routes: Routes = [{
 {
   path:"transaccion",
   component: DatosTransaccionesComponent
-}
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

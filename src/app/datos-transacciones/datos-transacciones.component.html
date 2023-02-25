@@ -1,17 +1,51 @@
 <p>Servicios Transacciones</p>
 <div>
-    <nav><label>PAN:</label><input></nav>
-    <nav><label>Numero de referencia:</label><input></nav>
-    <nav><label>Total de la compra:</label><input></nav>
-    <nav><label>Direccion de compra:</label><input></nav>
-    <button>Crear Transacción</button>
+    <nav><label>PAN:</label><input [(ngModel)]="valueCrearPAN"></nav>
+    <nav><label>Numero de referencia:</label><input [(ngModel)]="valueCrearNumeroReferencia"></nav>
+    <nav><label>Total de la compra:</label><input [(ngModel)]="valueCrearTotalCompra"></nav>
+    <nav><label>Direccion de compra:</label><input [(ngModel)]="valueCrearDireccionCompra"></nav>
+    <button (click)="clickCrearTransaccion()">Crear Transacción</button>
+</div>
+<div>
+    <div *ngIf="bCrearTransaccion" class="container">
+        <div class="row">
+            <div class="col-3">
+                <label>Código de respuesta:{{CrearCodigoRespuesta}}</label>
+            </div>
+            <div class="col-3">
+                <label>Mensaje:{{CrearMensaje}}</label>
+            </div>
+            <div class="col-3">
+                <label>Estado Transacción:{{CrearEstadoTransaccion}}</label>
+            </div>
+            <div class="col-3">
+                <label>Numero Referencía:{{CrearNumeroReferencia}}</label>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <div>
-    <nav><label>PAN:</label><input></nav>
-    <nav><label>Numero de referencia:</label><input></nav>
-    <nav><label>Total de la compra:</label><input></nav>
-    <button>Anular Transacción</button>
+    <nav><label>PAN:</label><input [(ngModel)]="valueAnularPan"></nav>
+    <nav><label>Numero de referencia:</label><input [(ngModel)]="valueAnularNumeroReferencia"></nav>
+    <nav><label>Total de la compra:</label><input [(ngModel)]="valueTotalCompra"></nav>
+    <button (click)="clickAnularTransaccion()">Anular Transacción</button>
+</div>
+
+<div>
+    <div *ngIf="bAnularTransaccion" class="container">
+        <div class="row">
+            <div class="col-4">
+                <label>CodigoRespuesta:{{AnularCodigoRespuesta}}</label>
+            </div>
+            <div class="col-4">
+                <label>Mensaje:{{AnularMensaje}}</label>
+            </div>
+            <div class="col-4">
+                <label>NumeroReferencia:{{AnularNumeroReferencia}}</label>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <nav>

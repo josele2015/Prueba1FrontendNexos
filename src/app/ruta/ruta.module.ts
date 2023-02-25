@@ -9,15 +9,13 @@ import { HomeComponent } from '../home/home.component';
 const routes: Routes = [
   {path: '',redirectTo:"/home",  pathMatch:"full"},
   {path: 'home',  component: HomeComponent},
-  /*{path: 'tarjetas', component: DatosTarjetasComponent,children:"./datos-tarjetas/datos-tarjetas.modules"},*/
+  {path: '*',redirectTo:"/home",  pathMatch:"full"},
+  // {path: 'tarjetas',redirectTo:"/home",  pathMatch:"full"},
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
-    /*DatosTarjetasModule,
-    DatosTransaccionesModule,
-    AppModule,*/
   ],
   exports:[RouterModule]
 })
